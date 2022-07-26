@@ -5,8 +5,6 @@ using UnityEngine;
 public class RangeAttack : MonoBehaviour {
 	public float fireDealy, speedUp, speed, spread;
     private float trueSpeed;
-	public int damage;
-    private int playerInSightTimer;
 	private bool canFire = true, speedUpLode = false;
 	public GameObject ammo,spawnPoint;
 	private RotaeTowars RotaeScript;
