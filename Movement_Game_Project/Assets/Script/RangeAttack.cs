@@ -67,7 +67,7 @@ public class RangeAttack : MonoBehaviour {
     private IEnumerator outPut()
     {
         yield return new WaitForSeconds(1);
-        print("the ammo speep ia at " + speed);
+        print("the ammo speed ia at " + speed);
         StartCoroutine(outPut());
     }
 }

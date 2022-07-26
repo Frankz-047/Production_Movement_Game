@@ -53,7 +53,9 @@ public class RotaeTowars : MonoBehaviour {
     {
         yield return new WaitForSeconds(1);
         print("can see player =  " + CanSeePlayer());
-        time++;
+        if (CanSeePlayer())
+            ++time;
+        print("Player insight Time : " + time);
         if (time == 10)
         {
             print("10 second have past");
