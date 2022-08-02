@@ -49,6 +49,11 @@ public class RotaeTowars : MonoBehaviour {
         return false;
     }
 
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
+
     private IEnumerator outPut()
     {
         yield return new WaitForSeconds(1);

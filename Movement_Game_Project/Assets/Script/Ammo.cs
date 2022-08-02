@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ammo : MonoBehaviour
 {
     public int destroyTimer;
+    public bool playerWeaponAmmo;
     
     void Start()
     {
@@ -15,14 +16,29 @@ public class Ammo : MonoBehaviour
     {
         PlayerHealth ph = go.gameObject.GetComponent<PlayerHealth>();
         RotaeTowars rt = go.gameObject.GetComponent<RotaeTowars>();
-        if (ph != null)
+        if (playerWeaponAmmo == false)
         {
-            ph.Hit();
-            print("hit");
+            if (ph != null)
+            {
+                ph.Hit();
+                print("player hit");
+            }
+            if (rt == null)
+            {
+                Destroy(gameObject);
+            }
         }
-        if (rt == null)
+        if (playerWeaponAmmo)
         {
-            Destroy(gameObject);
+            if (rt == null)
+            {
+                rt.Hit();
+                print("enemy hit");
+            }
+            if (ph == null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
