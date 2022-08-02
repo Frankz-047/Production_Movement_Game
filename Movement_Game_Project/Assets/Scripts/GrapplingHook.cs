@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GrapplingHook : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Transform _grapplingHook;
