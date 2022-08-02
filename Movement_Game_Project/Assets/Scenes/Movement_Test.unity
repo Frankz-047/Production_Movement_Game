@@ -326,6 +326,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1654123545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7280041186907022993, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+  m_PrefabInstance: {fileID: 7280041186952188738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1654123546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654123545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21adcd04548c0264ba5f34d481ef82c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWall:
+    serializedVersion: 2
+    m_Bits: 64
+  isGround:
+    serializedVersion: 2
+    m_Bits: 8
+  wallRunForce: 200
+  maxWallrunTime: 1.5
+  upwardsRunKey: 304
+  downwardsRunKey: 306
+  wallCheckDistance: 0.7
+  minJunpHeight: 2
+  orientation: {fileID: 2030254122}
+--- !u!4 &2030254122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7280041185864545192, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+  m_PrefabInstance: {fileID: 7280041186952188738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7280041186952188738
 PrefabInstance:
   m_ObjectHideFlags: 0

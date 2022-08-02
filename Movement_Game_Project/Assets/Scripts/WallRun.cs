@@ -7,10 +7,14 @@ public class WallRun : MonoBehaviour
     [Header("Wall Running Setting")]
     public LayerMask isWall;
     public LayerMask isGround;
-    public float wallRunForce, maxWallrunTime, wallrunTime;
+    public float wallRunForce, maxWallrunTime;
 
     [Header("Input")]
     private float horizontalInput, verticalInput;
+    public KeyCode upwardsRunKey = KeyCode.LeftShift;
+    public KeyCode downwardsRunKey = KeyCode.LeftControl;
+    private bool upwardsRunning;
+    private bool downwardsRunning;
 
     [Header("Detection")]
     public float wallCheckDistance, minJunpHeight;
@@ -20,19 +24,25 @@ public class WallRun : MonoBehaviour
     [Header("Reference")]
     public Transform orientation;
     private Rigidbody rb;
+    private PlayerMovement pm;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        pm = GetComponent<PlayerMovement>();
     }
     private void Update()
     {
         CheckWall();
+        StateMachine();
     }
 
-    //private void FixedUpdate()
-    //{
-    //}
+    private void FixedUpdate()
+    {
+        if (pm.wallrunning)
+            WallRunning();
+    }
     
     private void CheckWall()
     {
@@ -48,18 +58,27 @@ public class WallRun : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        upwardsRunning = Input.GetKey(upwardsRunKey);
+        downwardsRunning = Input.GetKey(downwardsRunKey);
+
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
         {
-            StartWallRun();
+            if (!pm.wallrunning)
+            {
+                StartWallRun();
+            }
         }
         else 
         {
-            EndWallRun();
+            if (pm.wallrunning)
+            {
+                EndWallRun();
+            }
         }
     }
     private void StartWallRun()
     {
-
+        pm.wallrunning = true;
     }
     private void WallRunning()
     {
@@ -82,6 +101,6 @@ public class WallRun : MonoBehaviour
     }
     private void EndWallRun()
     {
-
+        pm.wallrunning = false;
     }
 }

@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airForce;
+    private float desiredMoveSpeed;
+    public float wallrunSpeed;
     bool CanJump;
     public KeyCode jumpKey = KeyCode.Space;
 
@@ -24,6 +26,21 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
+
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        wallrunning,
+        crouching,
+        sliding,
+        air
+    }
+
+    //public bool sliding;
+    //public bool crouching;
+    public bool wallrunning;
 
     private void Start()
     {
@@ -63,6 +80,16 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
+    private void StateHandler()
+    {
+        // Mode - Wallrunning
+        if (wallrunning)
+        {
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = wallrunSpeed;
         }
     }
 
