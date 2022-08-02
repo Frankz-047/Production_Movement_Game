@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 7280041186907022997}
   - component: {fileID: 7280041186907022996}
   - component: {fileID: 7280041186907022999}
+  - component: {fileID: 1654123546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -421,11 +422,39 @@ MonoBehaviour:
   jumpForce: 5
   jumpCooldown: 2
   airForce: 2
+  wallrunSpeed: 0
   jumpKey: 32
   playerHeight: 2
   Ground:
     serializedVersion: 2
     m_Bits: 8
+  orientation: {fileID: 7280041185864545192}
+  state: 0
+  wallrunning: 0
+--- !u!114 &1654123546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21adcd04548c0264ba5f34d481ef82c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWall:
+    serializedVersion: 2
+    m_Bits: 64
+  isGround:
+    serializedVersion: 2
+    m_Bits: 8
+  wallRunForce: 200
+  maxWallrunTime: 1.5
+  upwardsRunKey: 304
+  downwardsRunKey: 306
+  wallCheckDistance: 0.7
+  minJunpHeight: 2
   orientation: {fileID: 7280041185864545192}
 --- !u!1 &7280041187113154129
 GameObject:
