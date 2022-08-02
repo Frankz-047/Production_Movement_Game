@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7280041185864545195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7280041186907022997}
@@ -364,6 +364,8 @@ GameObject:
   - component: {fileID: 7280041186907022996}
   - component: {fileID: 7280041186907022999}
   - component: {fileID: 1654123546}
+  - component: {fileID: 2138690302242985704}
+  - component: {fileID: 3143914291627216631}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -412,17 +414,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7280041186907022993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b3f0929ed6ce5845b6ff6d027dab160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  walkspeed: 5
   groundDrag: 1
   jumpForce: 5
   jumpCooldown: 2
   airForce: 2
-  wallrunSpeed: 0
+  wallrunSpeed: 10
   jumpKey: 32
   playerHeight: 2
   Ground:
@@ -438,7 +440,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7280041186907022993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21adcd04548c0264ba5f34d481ef82c3, type: 3}
   m_Name: 
@@ -451,11 +453,87 @@ MonoBehaviour:
     m_Bits: 8
   wallRunForce: 200
   maxWallrunTime: 1.5
+  wallClimbSpeed: 0
   upwardsRunKey: 304
   downwardsRunKey: 306
   wallCheckDistance: 0.7
-  minJunpHeight: 2
+  minJunpHeight: 1
   orientation: {fileID: 7280041185864545192}
+--- !u!114 &2138690302242985704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f1ba93c4324644a86925864eda62db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 7
+  sprintSpeed: 10
+  slideSpeed: 30
+  wallrunSpeed: 8.5
+  speedIncreaseMultiplier: 1.5
+  slopeIncreaseMultiplier: 2.5
+  groundDrag: 4
+  jumpForce: 12
+  jumpCooldown: 0.25
+  airMultiplier: 0.4
+  crouchSpeed: 0
+  crouchYScale: 0
+  jumpKey: 32
+  sprintKey: 304
+  crouchKey: 306
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  grounded: 0
+  maxSlopeAngle: 40
+  orientation: {fileID: 7280041185864545192}
+  state: 0
+  restricted: 0
+  sliding: 0
+  wallrunning: 0
+--- !u!114 &3143914291627216631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6a274a24309104cb697a2212f7f74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  wallRunForce: 200
+  wallRunJumpUpForce: 7
+  wallRunJumpSideForce: 14
+  maxWallRunTime: 1.5
+  wallClimbSpeed: 4
+  jumpKey: 32
+  upwardsRunKey: 304
+  downwardsRunKey: 306
+  doJumpOnEndOfTimer: 0
+  resetDoubleJumpsOnNewWall: 1
+  resetDoubleJumpsOnEveryWall: 0
+  allowedWallJumps: 1
+  wallCheckDistance: 0.7
+  minJumpHeight: 2
+  exitWallTime: 0.2
+  useGravity: 0
+  yDrossleSpeed: 0
+  orientation: {fileID: 7280041185864545192}
+  text_wallState: {fileID: 0}
 --- !u!1 &7280041187113154129
 GameObject:
   m_ObjectHideFlags: 0
