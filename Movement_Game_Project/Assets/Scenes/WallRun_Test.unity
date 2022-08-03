@@ -766,30 +766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1654123546, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1654123546, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: wallClimbSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2138690302242985704, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3143914291627216631, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041185864545192, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041185864545192, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022993, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_Name
       value: Player
@@ -838,15 +814,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: jumpForce
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3143914291627216631, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
 --- !u!1 &1861731799
 GameObject:

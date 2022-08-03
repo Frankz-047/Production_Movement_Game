@@ -113,7 +113,8 @@ public class WallRun : MonoBehaviour
             }
 
             // wall jump
-            if (Input.GetKeyDown(jumpKey)) WallJump();
+            if (Input.GetKeyDown(jumpKey)) 
+                WallJump();
         }
 
         // State 2 - Exiting
@@ -146,6 +147,12 @@ public class WallRun : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallCheckDistance, isWall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallCheckDistance, isWall);
+
+        if ((wallLeft || wallRight) && NewWallHit())
+        {
+            wallJumpsDone = 0;
+            wallRunTimer = maxWallRunTime;
+        }
     }
     private void RememberLastWall()
     {
@@ -181,8 +188,8 @@ public class WallRun : MonoBehaviour
     }
     private void WallRunning()
     {
-        rb.useGravity = false;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.useGravity = useGravity;
+        //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
 
@@ -192,6 +199,7 @@ public class WallRun : MonoBehaviour
             wallForward = -wallForward;
 
         float velY = rb.velocity.y;
+        
         if (!useGravity)
         {
             if (velY > 0)
