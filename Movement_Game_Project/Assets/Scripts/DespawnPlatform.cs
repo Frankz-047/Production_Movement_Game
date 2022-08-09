@@ -6,23 +6,15 @@ using UnityEngine;
 public class DespawnPlatform : MonoBehaviour
 {
     public float lifetime = 5.0f;
-    public float displacement = 2.0f;
     
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 position = this.transform.position;
-        position[1] -= displacement;
-        this.transform.position = position;
+        Destroy(gameObject, lifetime);   
     }
-
     // Update is called once per frame
     void Update()
     {
-        lifetime -= Time.deltaTime;
-        if (lifetime <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 }

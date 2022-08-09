@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
 
-    PlayerMovement player;
+    public PlayerCam rotation;
 
     private void Start()
     {
@@ -92,7 +92,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(spawnPlatform))
         {
-            Instantiate(platform, this.transform.position, this.transform.rotation);
+            Vector3 position = gameObject.transform.position;
+            position.y -= (playerHeight * 0.55f);
+            Instantiate(platform, position, orientation.transform.rotation);
         }
     }
 
@@ -133,5 +135,10 @@ public class PlayerMovement : MonoBehaviour
         checkGrounded = false;
         jumpCharge = 2;
         CanJump = true;
+    }
+
+    public bool OnGround()
+    {
+        return isGround;
     }
 }
