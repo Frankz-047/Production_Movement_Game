@@ -16,14 +16,22 @@ public class MoveMent : MonoBehaviour
     [Header("Ground")]
     public float playerHeight;
     public LayerMask Ground;
+<<<<<<< Updated upstream
     bool isGround;
+=======
+    public bool isGround;
+    public bool checkGrounded;
+    int jumpCharge;
+>>>>>>> Stashed changes
 
     [Header("Setting")]
     public Transform orientation;
+    public KeyCode spawnPlatform = KeyCode.F;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
+    public PlayerCam rotation;
 
     private void Start()
     {
@@ -31,11 +39,22 @@ public class MoveMent : MonoBehaviour
         rb.freezeRotation = true;
 
         CanJump = true;
+        jumpCharge = 2;
     }
 
     private void Update()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
+
+        // better solutions welcome, set this way so both only check for one frame
+        if (!isGround && !checkGrounded)
+        {
+            checkGrounded = true;
+        }
+        if (isGround && checkGrounded)
+        {
+            ResetJump();
+        }
 
         MyInput();
         SpeedControl();
@@ -56,13 +75,32 @@ public class MoveMent : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+<<<<<<< Updated upstream
         if (Input.GetKey(jumpKey) && CanJump && isGround)
+=======
+        //To Jump
+        if (Input.GetKeyDown(jumpKey) && CanJump)
+>>>>>>> Stashed changes
         {
-            CanJump = false;
+            --jumpCharge;
+
+            if (!isGround)
+            {
+                --jumpCharge;
+            }
+
+            if (jumpCharge <= 0)
+            {
+                CanJump = false;
+            }
 
             Jump();
+        }
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+        if (Input.GetKeyDown(spawnPlatform))
+        {
+            Vector3 position = gameObject.transform.position;
+            position.y -= (playerHeight * 0.55f);
         }
     }
 
