@@ -4,69 +4,79 @@ using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
-    [SerializeField] private CharacterController _controller;
-    [SerializeField] private Transform _grapplingHook;
-    [SerializeField] private Transform _handPos;
-    [SerializeField] private Transform _playerBody;
-    [SerializeField] private LayerMask _grappleLayer;
-    [SerializeField] private float _maxGrappleDistance;
-    [SerializeField] private float _hookSpeed;
-    [SerializeField] private Vector3 _offset;
+    public LineRenderer lineRender;
+    public GameObject player;
+    public Transform grappligHook;
+    public Transform handPos;
+    public Transform playerBody;
+    public LayerMask grappleLayer;
+    public float maxGrappleDistance;
+    public float hookSpeed;
+    public Vector3 offset;
 
-    private bool isShooting, isGrappling;
-    private Vector3 _hookPoint;
+    private bool isGrappling;
+    private Vector3 hookPoint;
 
-    private void Start()
+        // Use this for initialization
+    void Start()
     {
-        isShooting = false;
         isGrappling = false;
+        lineRender.enabled = false;
     }
 
-    private void update()
+    void LateUpdate()
+    {
+        if (lineRender.enabled)
+        {
+            lineRender.SetPosition(0, handPos.position);
+            lineRender.SetPosition(1, grappligHook.position);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             ShootHook();
         }
-
-        if(isGrappling)
+        if (isGrappling)
         {
-            _grapplingHook.position = Vector3.Lerp(_grapplingHook.position, _hookPoint, _hookSpeed * Time.deltaTime);
-            if (Vector3.Distance(_grapplingHook.position, _hookPoint) < 0.5f)
+            // the player si grappling
+            grappligHook.position = Vector3.Lerp(grappligHook.position, hookPoint, hookSpeed * Time.deltaTime); 
+            if(Vector3.Distance(grappligHook.position, hookPoint) < 0.5f)
             {
-                _controller.enabled = false;
-                _playerBody.position = Vector3.Lerp(_playerBody.position, _hookPoint - _offset, _hookSpeed * Time.deltaTime);
-                if (Vector3.Distance(_playerBody.position, _hookPoint - _offset) < 0.5f)
+                player.GetComponent<Rigidbody>().useGravity = false;
+                if (Vector3.Distance(playerBody.position, hookPoint) < 4.0f)
                 {
-                    _controller.enabled = true;
+                    grappligHook.position = playerBody.position;
+                    grappligHook.parent = handPos;
                     isGrappling = false;
-                    _grapplingHook.SetParent(_handPos);
+                    player.GetComponent<Rigidbody>().useGravity = true;
+                    lineRender.enabled = false;
+                }
+                else
+                {
+                    playerBody.position = Vector3.Lerp(playerBody.position, hookPoint, hookSpeed * Time.deltaTime);
                 }
             }
-
         }
     }
 
+    // shoot hook at the target
     private void ShootHook()
     {
-        if (isShooting || isGrappling)
-        {
-            return;
-        }
-
-        isShooting = true;
+        if (isGrappling) return;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, _maxGrappleDistance, _grappleLayer))
+        if(Physics.Raycast(ray, out hit, maxGrappleDistance, grappleLayer))
         {
-            _hookPoint = hit.point;
+            // shoot the hook, and then start to grapple
             isGrappling = true;
-            _grapplingHook.parent = null;
-            _grapplingHook.LookAt(_hookPoint);
-            
+            grappligHook.parent = null;
+            grappligHook.LookAt(hit.point);
+            hookPoint = hit.point;
+            lineRender.enabled = true;
         }
-
-        isShooting = false;
-        
     }
 }
