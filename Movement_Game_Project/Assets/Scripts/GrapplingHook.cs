@@ -16,12 +16,14 @@ public class GrapplingHook : MonoBehaviour
 
     private bool isGrappling;
     private Vector3 hookPoint;
+    private Rigidbody playerRb;
 
         // Use this for initialization
     void Start()
     {
         isGrappling = false;
         lineRender.enabled = false;
+        playerRb = player.GetComponent<Rigidbody>();
     }
 
     void LateUpdate()
@@ -46,7 +48,7 @@ public class GrapplingHook : MonoBehaviour
             grappligHook.position = Vector3.Lerp(grappligHook.position, hookPoint, hookSpeed * Time.deltaTime); 
             if(Vector3.Distance(grappligHook.position, hookPoint) < 0.5f)
             {
-                player.GetComponent<Rigidbody>().useGravity = false;
+                playerRb.useGravity = false;
                 if (Vector3.Distance(playerBody.position, hookPoint) < 4.0f)
                 {
                     grappligHook.position = playerBody.position;
@@ -57,7 +59,8 @@ public class GrapplingHook : MonoBehaviour
                 }
                 else
                 {
-                    playerBody.position = Vector3.Lerp(playerBody.position, hookPoint, hookSpeed * Time.deltaTime);
+                    //playerBody.position = Vector3.Lerp(playerBody.position, hookPoint, hookSpeed * Time.deltaTime);
+                    playerRb.MovePosition(playerBody.position + (hookPoint - playerBody.position) * hookSpeed * Time.deltaTime);
                 }
             }
         }
@@ -69,14 +72,17 @@ public class GrapplingHook : MonoBehaviour
         if (isGrappling) return;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out hit, maxGrappleDistance, grappleLayer))
+        if(Physics.Raycast(ray, out hit, maxGrappleDistance))
         {
-            // shoot the hook, and then start to grapple
-            isGrappling = true;
-            grappligHook.parent = null;
-            grappligHook.LookAt(hit.point);
-            hookPoint = hit.point;
-            lineRender.enabled = true;
+            if (hit.collider.CompareTag("Grappleable"))
+            {
+                // shoot the hook, and then start to grapple
+                isGrappling = true;
+                grappligHook.parent = null;
+                grappligHook.LookAt(hit.point);
+                hookPoint = hit.point;
+                lineRender.enabled = true;
+            }
         }
     }
 }
