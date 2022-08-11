@@ -8,7 +8,6 @@ public class RotaeTowars : MonoBehaviour {
     private int time;
     public float attackRange;
     public float rotaeSpeed;
-
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,11 +46,7 @@ public class RotaeTowars : MonoBehaviour {
             if (hit.collider.CompareTag("Player")) return true;
         }
         return false;
-    }
-
-    public void Hit()
-    {
-        Destroy(gameObject);
+        
     }
 
     private IEnumerator outPut()
@@ -59,17 +54,11 @@ public class RotaeTowars : MonoBehaviour {
         yield return new WaitForSeconds(1);
         print("can see player =  " + CanSeePlayer());
         if (CanSeePlayer())
-        {
             ++time;
-        }
-        else
-        {
-            time = 0;
-        }
-            print("Player insight Time : " + time);
+        print("Player insight Time : " + time);
         if (time == 10)
         {
-            print("10 second have past the player is hit");
+            print("10 second have past");
             time = 0;
         }
         StartCoroutine(outPut());

@@ -3,43 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour {
-	public float speedUp, speed, killTimer;
-    private float trueSpeed, fireDealy = 0.5f, trueKillTimer;
-    private int fireTime = 0;
-    public bool speedUpLode = false;
-	private bool canFire = true; 
+	public float fireDealy, speedUp, speed, spread;
+    private float trueSpeed;
+	private bool canFire = true, speedUpLode = false;
 	public GameObject ammo,spawnPoint;
-    private GameObject player;
 	private RotaeTowars RotaeScript;
 
 	// Use this for initialization
 	void Start () {
         trueSpeed = speed;
-        trueKillTimer = killTimer * (1.0f / fireTime);
-        killTimer = trueKillTimer;
-		RotaeScript = gameObject.GetComponent<RotaeTowars>();
-        player = GameObject.FindGameObjectWithTag("Player");
+		RotaeScript = this.GetComponent<RotaeTowars>();
         StartCoroutine(outPut());
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        playerInSight();
 
         if (RotaeScript.ReadyToAttack() && canFire){
 
 			FireBullet();
 			StartCoroutine(FireTimer());
-		}
+		} 
+	}
+
+    private void playerInSight()
+    {
         if(RotaeScript.ReadyToAttack() && speedUpLode == false)
         {
-            StopCoroutine(outOfSight());
             speedUpLode = true;
             StartCoroutine(inSight());
         }
-        if (RotaeScript.ReadyToAttack() == false)
+        if(RotaeScript.ReadyToAttack() == false)
         {
-            StartCoroutine(outOfSight());
+            speed = trueSpeed;
         }
     }
 
@@ -57,23 +55,10 @@ public class RangeAttack : MonoBehaviour {
         canFire = true;
     }
 
-    private IEnumerator outOfSight()
-    {
-        yield return new WaitForSeconds(5);
-        speed = trueSpeed;
-        killTimer = trueKillTimer;
-    }
-
     private IEnumerator inSight()
     {
+        yield return new WaitForSeconds(1);
         speed += speedUp;
-        killTimer -= 1;
-        if(killTimer <= 0)
-        {
-            PlayerHealth ph = player.GetComponent<PlayerHealth>();
-            ph.Hit();
-        }
-        yield return new WaitForSeconds(0.2f);
         speedUpLode = false;
     }
 
