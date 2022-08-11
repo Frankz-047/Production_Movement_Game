@@ -848,8 +848,6 @@ MonoBehaviour:
   useGravity: 0
   yDrossleSpeed: 0
   orientation: {fileID: 7280041185864545192}
-  spawnPlatform: 102
-  platform: {fileID: 3347269085450339535, guid: 7996b6399797ffb4f8055acb995fdd25, type: 3}
 --- !u!1 &7280041187113154129
 GameObject:
   m_ObjectHideFlags: 0
