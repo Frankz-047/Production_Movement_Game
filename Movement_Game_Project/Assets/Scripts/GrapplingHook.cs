@@ -109,7 +109,7 @@ public class GrapplingHook : MonoBehaviour
     // shoot the hook at the target
     private void ShootHook()
     {
-        if (isGrappling) return;
+        if (isGrappling || isTeleporting || isRetracting) return;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit, maxGrappleDistance, grappleLayer))
