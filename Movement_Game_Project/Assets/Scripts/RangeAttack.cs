@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour {
 	public float speedUp, speed, killTimer;
-    private float trueSpeed, fireDealy = 0.5f, trueKillTimer;
+    public float fireDealy = 0.5f;
+    private float trueSpeed,  trueKillTimer;
     private int fireTime = 0;
     public bool speedUpLode = false;
 	private bool canFire = true; 
@@ -12,8 +14,11 @@ public class RangeAttack : MonoBehaviour {
     private GameObject player;
 	private RotaeTowars RotaeScript;
 
-	// Use this for initialization
-	void Start () {
+    //for dandelion 
+    public int i_numberOfBulletsX, i_numberOfBulletsY;
+
+    // Use this for initialization
+    void Start () {
         trueSpeed = speed;
         trueKillTimer = killTimer * (1.0f / fireTime);
         killTimer = trueKillTimer;
@@ -25,30 +30,70 @@ public class RangeAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-        if (RotaeScript.ReadyToAttack() && canFire){
-
-			FireBullet();
-			StartCoroutine(FireTimer());
-		}
-        if(RotaeScript.ReadyToAttack() && speedUpLode == false)
+        if(RotaeScript != null)
         {
-            StopCoroutine(outOfSight());
-            speedUpLode = true;
-            StartCoroutine(inSight());
+            if (RotaeScript.ReadyToAttack() && canFire)
+            {
+
+                FireBullet();
+                StartCoroutine(FireTimer());
+            }
+            if (RotaeScript.ReadyToAttack() && speedUpLode == false)
+            {
+                StopCoroutine(outOfSight());
+                speedUpLode = true;
+                StartCoroutine(inSight());
+            }
+            if (RotaeScript.ReadyToAttack() == false)
+            {
+                StartCoroutine(outOfSight());
+            }
         }
-        if (RotaeScript.ReadyToAttack() == false)
+        else
         {
-            StartCoroutine(outOfSight());
+            if (canFire)
+            {
+                FireBullet();
+                StartCoroutine(FireTimer());
+            }
         }
+       
     }
 
 	private void FireBullet()
     {
-        Quaternion rotation = spawnPoint.transform.rotation;
-        GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-        ammoObj.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Force);
-	}
+  
+        if (RotaeScript != null)
+        {
+            Quaternion rotation = spawnPoint.transform.rotation;
+            GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+            
+        }
+        else
+        {
+            Quaternion rotation = this.transform.rotation;
+            float XAngledifference = 360 / i_numberOfBulletsX;
+            float YAngleDifference = 90 / i_numberOfBulletsY;
+            for (int y = 0; y <= i_numberOfBulletsY; y++)
+            {
+                for (int x = 0; x <= i_numberOfBulletsX; x++)
+                {
+                    if(x >= (i_numberOfBulletsX / 2))
+                    {
+                        YAngleDifference *= -1;
+                        rotation.x = 0;
+                    }
+                    GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+                    rotation.y += XAngledifference;
+                    rotation.x += YAngleDifference;
+                    this.transform.Rotate(rotation.x, rotation.y, 0, Space.World);
+
+                }
+            }
+            this.transform.rotation = new Quaternion(0,0,0,0);
+        }
+
+    }
 
 	private IEnumerator FireTimer()
     {
