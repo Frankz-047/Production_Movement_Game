@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.91
+      value: 15.59
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.y
@@ -909,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9837129
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -917,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.17974661
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -929,7 +929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -20.71
       objectReference: {fileID: 0}
     - target: {fileID: 2826838658190272577, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -958,6 +958,14 @@ PrefabInstance:
     - target: {fileID: 2826838658190272588, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
       propertyPath: i_numberOfBullets
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826838658190272588, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
+      propertyPath: i_numberOfBulletsX
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826838658190272588, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}
+      propertyPath: i_numberOfBulletsY
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2826838658190272579, guid: 28f67f67861cc364c99892dfc9b7ea6a, type: 3}

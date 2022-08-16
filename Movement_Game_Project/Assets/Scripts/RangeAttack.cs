@@ -15,10 +15,10 @@ public class RangeAttack : MonoBehaviour {
 	private RotaeTowars RotaeScript;
 
     //for dandelion 
-    public int i_numberOfBullets;
+    public int i_numberOfBulletsX, i_numberOfBulletsY;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         trueSpeed = speed;
         trueKillTimer = killTimer * (1.0f / fireTime);
         killTimer = trueKillTimer;
@@ -72,14 +72,23 @@ public class RangeAttack : MonoBehaviour {
         else
         {
             Quaternion rotation = this.transform.rotation;
-            float Angledifference = 360 / i_numberOfBullets;
-  
-            for (int x = 0; x <= i_numberOfBullets; x ++ )
+            float XAngledifference = 360 / i_numberOfBulletsX;
+            float YAngleDifference = 90 / i_numberOfBulletsY;
+            for (int y = 0; y <= i_numberOfBulletsY; y++)
             {
-                GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-                rotation.y += Angledifference;
-                this.transform.Rotate(0,rotation.y,0,Space.World);
+                for (int x = 0; x <= i_numberOfBulletsX; x++)
+                {
+                    if(x >= (i_numberOfBulletsX / 2))
+                    {
+                        YAngleDifference *= -1;
+                        rotation.x = 0;
+                    }
+                    GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+                    rotation.y += XAngledifference;
+                    rotation.x += YAngleDifference;
+                    this.transform.Rotate(rotation.x, rotation.y, 0, Space.World);
 
+                }
             }
             this.transform.rotation = new Quaternion(0,0,0,0);
         }
