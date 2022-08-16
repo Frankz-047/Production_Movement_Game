@@ -1182,6 +1182,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846605104, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: minJumpHeight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022993, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1191,16 +1195,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4
+      value: 7.79
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3
+      value: 27.37
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1229,6 +1245,14 @@ PrefabInstance:
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: playerHeight
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
