@@ -1,16 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour {
 	public float speedUp, speed, killTimer;
-    private float trueSpeed, fireDealy = 0.5f, trueKillTimer;
+    public float fireDealy = 0.5f;
+    private float trueSpeed,  trueKillTimer;
     private int fireTime = 0;
     public bool speedUpLode = false;
 	private bool canFire = true; 
 	public GameObject ammo,spawnPoint;
     private GameObject player;
 	private RotaeTowars RotaeScript;
+
+    //for dandelion 
+    public int i_numberOfBullets;
 
 	// Use this for initialization
 	void Start () {
@@ -25,30 +30,61 @@ public class RangeAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-        if (RotaeScript.ReadyToAttack() && canFire){
-
-			FireBullet();
-			StartCoroutine(FireTimer());
-		}
-        if(RotaeScript.ReadyToAttack() && speedUpLode == false)
+        if(RotaeScript != null)
         {
-            StopCoroutine(outOfSight());
-            speedUpLode = true;
-            StartCoroutine(inSight());
+            if (RotaeScript.ReadyToAttack() && canFire)
+            {
+
+                FireBullet();
+                StartCoroutine(FireTimer());
+            }
+            if (RotaeScript.ReadyToAttack() && speedUpLode == false)
+            {
+                StopCoroutine(outOfSight());
+                speedUpLode = true;
+                StartCoroutine(inSight());
+            }
+            if (RotaeScript.ReadyToAttack() == false)
+            {
+                StartCoroutine(outOfSight());
+            }
         }
-        if (RotaeScript.ReadyToAttack() == false)
+        else
         {
-            StartCoroutine(outOfSight());
+            if (canFire)
+            {
+                FireBullet();
+                StartCoroutine(FireTimer());
+            }
         }
+       
     }
 
 	private void FireBullet()
     {
-        Quaternion rotation = spawnPoint.transform.rotation;
-        GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-        ammoObj.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Force);
-	}
+  
+        if (RotaeScript != null)
+        {
+            Quaternion rotation = spawnPoint.transform.rotation;
+            GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+            
+        }
+        else
+        {
+            Quaternion rotation = this.transform.rotation;
+            float Angledifference = 360 / i_numberOfBullets;
+  
+            for (int x = 0; x <= i_numberOfBullets; x ++ )
+            {
+                GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+                rotation.y += Angledifference;
+                this.transform.Rotate(0,rotation.y,0,Space.World);
+
+            }
+            this.transform.rotation = new Quaternion(0,0,0,0);
+        }
+
+    }
 
 	private IEnumerator FireTimer()
     {
