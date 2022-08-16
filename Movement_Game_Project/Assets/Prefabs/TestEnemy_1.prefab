@@ -97,12 +97,12 @@ GameObject:
   - component: {fileID: 2826838658190272579}
   - component: {fileID: 2826838658190272588}
   m_Layer: 0
-  m_Name: TestEnemy
+  m_Name: TestEnemy_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2826838658190272577
 Transform:
   m_ObjectHideFlags: 0
@@ -226,6 +226,9 @@ MonoBehaviour:
   speedUp: 10
   speed: 1000
   killTimer: 0
+  fireDealy: 0.5
   speedUpLode: 0
   ammo: {fileID: 44918463316603371, guid: a98b5df9ad3012644ada0cfc49f657cf, type: 3}
   spawnPoint: {fileID: 2826838657004362707}
+  i_numberOfBulletsX: 0
+  i_numberOfBulletsY: 0
