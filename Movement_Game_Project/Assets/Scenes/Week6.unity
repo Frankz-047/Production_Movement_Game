@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 21118095}
   - component: {fileID: 21118094}
   - component: {fileID: 21118093}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,11 +218,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &394622317 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7280041186827877937, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-  m_PrefabInstance: {fileID: 1846605102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539260481
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +379,7 @@ GameObject:
   - component: {fileID: 597824175}
   - component: {fileID: 597824174}
   - component: {fileID: 597824178}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +681,7 @@ GameObject:
   - component: {fileID: 758998160}
   - component: {fileID: 758998159}
   - component: {fileID: 758998158}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AirCube
   m_TagString: Grappleable
   m_Icon: {fileID: 0}
@@ -769,33 +764,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &860373041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 937924331991686566, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-  m_PrefabInstance: {fileID: 1846605102}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &860373042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860373041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93978cca4a0ca14bae5c8ad5749f2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 394622317}
-  ammo: {fileID: 44918463316603371, guid: f10402326cbb716429a127ae2f4e7178, type: 3}
-  spawnPoint: {fileID: 2122978236}
-  fireingTimer: 1
-  BulletsSpread: 0.2
-  reloadTimer: 0.7
-  ammocount: 2
-  ammoSpeed: 5000
-  pushBack: 0
-  reloading: 0
 --- !u!1 &1242250965
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +776,7 @@ GameObject:
   - component: {fileID: 1242250968}
   - component: {fileID: 1242250967}
   - component: {fileID: 1242250966}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AirCube
   m_TagString: Grappleable
   m_Icon: {fileID: 0}
@@ -982,7 +950,7 @@ GameObject:
   - component: {fileID: 1792253452}
   - component: {fileID: 1792253451}
   - component: {fileID: 1792253450}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,22 +1106,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2490782102893883996, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041186627195540, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041186627195540, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041186627195541, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022993, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1200,10 +1152,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280041187113154134, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1301,7 +1249,7 @@ GameObject:
   - component: {fileID: 2057545826}
   - component: {fileID: 2057545825}
   - component: {fileID: 2057545824}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,8 +1332,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2122978236 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7280041186827877939, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
-  m_PrefabInstance: {fileID: 1846605102}
-  m_PrefabAsset: {fileID: 0}
