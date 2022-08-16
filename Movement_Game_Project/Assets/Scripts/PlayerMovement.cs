@@ -167,4 +167,9 @@ public class PlayerMovement : MonoBehaviour
     {
         CanJump = true;
     }
+
+    public bool onGround()
+    {
+        return isGround;
+    }
 }

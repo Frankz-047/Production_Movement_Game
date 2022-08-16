@@ -11,11 +11,13 @@ public class PlayerWeaponShoot : MonoBehaviour
     public int ammocount, ammoSpeed, pushBack;
     private int maxAmmocount;
     public bool reloading = false;
+    private PlayerMovement pm;
 
     // Start is called before the first frame update
     void Start()
     {
         maxAmmocount = ammocount;
+        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class PlayerWeaponShoot : MonoBehaviour
         Quaternion rotation = mainCamera.transform.rotation;
         GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
         ammoObj.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * ammoSpeed, ForceMode.Force);
-        if (true)
+        if (pm.onGround() == false)
         {
             player.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * (pushBack * -1), ForceMode.Force);
         }
