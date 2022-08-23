@@ -14,6 +14,8 @@ public class WallRun : MonoBehaviour
     public float wallRunJumpSideForce = 7f;
     public float maxWallRunTime = 1f;
     public float wallClimbSpeed;
+    public float fov = 90f;
+    public float tilt = 5f;
 
     [Header("Input")]
     private float horizontalInput, verticalInput;
@@ -45,6 +47,7 @@ public class WallRun : MonoBehaviour
     public Transform orientation;
     private Rigidbody rb;
     private PlayerMovement pm;
+    public PlayerCam cam;
 
     [Header("Other")]
     private RaycastHit leftWallHit;
@@ -185,6 +188,10 @@ public class WallRun : MonoBehaviour
         wallRunTimer = maxWallRunTime;
         rb.useGravity = useGravity;
         wallRemembered = false;
+
+        cam.DoFov(fov);
+        if (wallLeft) cam.DoTilt(-tilt);
+        if (wallRight) cam.DoTilt(tilt);
     }
     private void WallRunning()
     {
@@ -231,6 +238,9 @@ public class WallRun : MonoBehaviour
     {
         rb.useGravity = true;
         pm.wallrunning = false;
+
+        cam.DoFov(80f);
+        cam.DoTilt(0f);
     }
 
     public void WallJump()

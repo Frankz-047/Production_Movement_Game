@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airForce;
+    public int jumpCharge = 2;
+    public float fallMult = 2f;
     bool CanJump;
     public KeyCode jumpKey = KeyCode.Space;
 
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask Ground;
     public bool isGround;
+    public bool checkGrounded;
 
     [Header("Setting")]
     public Transform orientation;
@@ -58,6 +61,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
 
+        if (!isGround && !checkGrounded)
+        {
+            checkGrounded = true;
+        }
+        if (isGround && checkGrounded)
+        {
+            ResetJump();
+        }
+
         MyInput();
         SpeedControl();
         StateHandler();
@@ -72,6 +84,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (state != MovementState.restricted)
             MovePlayer();
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y * fallMult * Time.deltaTime;
+        }
     }
 
     private void MyInput()
@@ -80,13 +96,20 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //To Jump
-        if (Input.GetKey(jumpKey) && CanJump && isGround)
+        if (Input.GetKeyDown(jumpKey) && CanJump)
         {
-            CanJump = false;
+            --jumpCharge;
+            if (!isGround)
+            {
+                --jumpCharge;
+            }
+
+            if (jumpCharge <= 0)
+            {
+                CanJump = false;
+            }
 
             Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
 
@@ -165,7 +188,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ResetJump()
     {
+        checkGrounded = false;
         CanJump = true;
+        jumpCharge = 2;
     }
 
     public bool onGround()
