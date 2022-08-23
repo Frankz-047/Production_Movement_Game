@@ -35,8 +35,9 @@ public class Ammo : MonoBehaviour
                 rt.Hit();
                 print("enemy hit");
             }
-            if (ph == null)
+            if (ph == null && go.gameObject.CompareTag("Ammo") != true)
             {
+                print("a");
                 Destroy(gameObject);
             }
         }

@@ -24,7 +24,6 @@ public class PlayerWeaponShoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canFire && ammocount > 0)
         {
             FireBulletMain();
-            FireBulletSub();
             ammocount -= 1;
             StartCoroutine(FireTimer());
         }
@@ -48,6 +47,7 @@ public class PlayerWeaponShoot : MonoBehaviour
         {
             player.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * (pushBack * -1), ForceMode.Force);
         }
+        FireBulletSub();
     }
 
     private void FireBulletSub()

@@ -13,7 +13,7 @@ public class RotaeTowars : MonoBehaviour {
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         target  = player.GetComponent<Transform>();
-        StartCoroutine(outPut());
+        //StartCoroutine(outPut());
     }
 	
 	// Update is called once per frame
@@ -52,6 +52,14 @@ public class RotaeTowars : MonoBehaviour {
     public void Hit()
     {
         Destroy(gameObject);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ammo"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator outPut()

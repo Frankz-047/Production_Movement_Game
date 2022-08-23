@@ -15,8 +15,13 @@ GameObject:
   - component: {fileID: 7663008244655549809}
   - component: {fileID: 4445729997305071840}
   m_Layer: 2
+<<<<<<< Updated upstream:Movement_Game_Project/Assets/Prefabs/playerAmmo.prefab
   m_Name: playerAmmo
   m_TagString: Untagged
+=======
+  m_Name: PlayerBullet
+  m_TagString: Ammo
+>>>>>>> Stashed changes:Movement_Game_Project/Assets/Prefabs/PlayerBullet.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
