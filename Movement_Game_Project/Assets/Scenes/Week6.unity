@@ -218,6 +218,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &539260481
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +367,19 @@ MonoBehaviour:
   speedUpLode: 0
   ammo: {fileID: 44918463316603371, guid: a98b5df9ad3012644ada0cfc49f657cf, type: 3}
   spawnPoint: {fileID: 1861731799}
+=======
+--- !u!114 &95835622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7280041186827877943, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+  m_PrefabInstance: {fileID: 1846605102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a95f752b566ea42b1b0f86f18d5143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &597824173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1120,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846605104, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 95835622}
     - target: {fileID: 7280041186907022993, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1124,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.05
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022997, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1155,8 +1173,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+<<<<<<< Updated upstream
       propertyPath: jumpForce
       value: 7
+=======
+      propertyPath: jumpCharge
+      value: 2
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}

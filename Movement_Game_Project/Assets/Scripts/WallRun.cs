@@ -44,7 +44,10 @@ public class WallRun : MonoBehaviour
     [Header("Reference")]
     public Transform orientation;
     private Rigidbody rb;
+    public PlayerCam cam;
     private PlayerMovement pm;
+    public float fov = 90f;
+    public float tilt = 5f;
 
     [Header("Other")]
     private RaycastHit leftWallHit;
@@ -185,6 +188,10 @@ public class WallRun : MonoBehaviour
         wallRunTimer = maxWallRunTime;
         rb.useGravity = useGravity;
         wallRemembered = false;
+
+        cam.DoFov(fov);
+        if (wallLeft) cam.DoTilt(-tilt);
+        if (wallRight) cam.DoTilt(tilt);
     }
     private void WallRunning()
     {
@@ -231,6 +238,9 @@ public class WallRun : MonoBehaviour
     {
         rb.useGravity = true;
         pm.wallrunning = false;
+
+        cam.DoFov(80f);
+        cam.DoTilt(0f);
     }
 
     public void WallJump()

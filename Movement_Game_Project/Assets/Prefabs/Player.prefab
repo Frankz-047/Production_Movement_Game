@@ -829,10 +829,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkspeed: 10
   wallrunSpeed: 10
-  groundDrag: 1
-  jumpForce: 5
+  groundDrag: 4
+  jumpForce: 8
   jumpCooldown: 1
   airForce: 2
+  fallMult: 1.5
   jumpKey: 32
   playerHeight: 2
   Ground:
