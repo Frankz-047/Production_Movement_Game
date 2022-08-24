@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour {
 	public float speedUp, speed, killTimer;
-    public float fireDealy = 0.5f;
-    private float trueSpeed,  trueKillTimer;
+    private float trueSpeed, fireDealy = 0.5f, trueKillTimer;
     private int fireTime = 0;
     public bool speedUpLode = false;
 	private bool canFire = true; 
@@ -14,24 +12,26 @@ public class RangeAttack : MonoBehaviour {
     private GameObject player;
 	private RotaeTowars RotaeScript;
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
         trueSpeed = speed;
-        trueKillTimer = killTimer;
+        trueKillTimer = killTimer * (1.0f / fireTime);
+        killTimer = trueKillTimer;
 		RotaeScript = gameObject.GetComponent<RotaeTowars>();
         player = GameObject.FindGameObjectWithTag("Player");
-        //StartCoroutine(outPut());
+        StartCoroutine(outPut());
     }
+	
+	// Update is called once per frame
+	void Update () {
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (RotaeScript.ReadyToAttack() && canFire)
-        {
-            FireBullet();
-            StartCoroutine(FireTimer());
-        }
-        if (RotaeScript.ReadyToAttack() && speedUpLode == false)
+
+        if (RotaeScript.ReadyToAttack() && canFire){
+
+			FireBullet();
+			StartCoroutine(FireTimer());
+		}
+        if(RotaeScript.ReadyToAttack() && speedUpLode == false)
         {
             StopCoroutine(outOfSight());
             speedUpLode = true;
@@ -45,13 +45,10 @@ public class RangeAttack : MonoBehaviour {
 
 	private void FireBullet()
     {
-        if (RotaeScript != null)
-        {
-            Quaternion rotation = spawnPoint.transform.rotation;
-            GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-            
-        }
-    }
+        Quaternion rotation = spawnPoint.transform.rotation;
+        GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
+        ammoObj.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Force);
+	}
 
 	private IEnumerator FireTimer()
     {
@@ -85,13 +82,5 @@ public class RangeAttack : MonoBehaviour {
         yield return new WaitForSeconds(1);
         print("the ammo speed ia at " + speed);
         StartCoroutine(outPut());
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ammo"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

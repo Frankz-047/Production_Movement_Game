@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerHealth : MonoBehaviour
+{
+    public int health;
+    //public GameObject respawnPoint;
+
+    private void Dead()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Hit()
+    {
+        print("hit");
+        health--;
+        if(health <= 0)
+        {
+            Dead();
+        }
+
+        //gameObject.transform.position = respawnPoint.transform.position;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Ammo ammo = collision.gameObject.GetComponent<Ammo>();
+        if (ammo != null)
+        {
+            Hit();
+        }
+    }
+
+}
