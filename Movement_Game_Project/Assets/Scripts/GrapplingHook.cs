@@ -38,10 +38,7 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            ShootHook();
-        }
+
         if (isGrappling)
         {
             // the player si grappling
@@ -67,7 +64,7 @@ public class GrapplingHook : MonoBehaviour
     }
 
     // shoot hook at the target
-    private void ShootHook()
+    public void ShootHook()
     {
         if (isGrappling) return;
         RaycastHit hit;

@@ -770,6 +770,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7280041186907022997}
   - component: {fileID: 7280041186907022996}
+  - component: {fileID: 7611217455755727102}
+  - component: {fileID: 4508888837251354999}
   - component: {fileID: 7280041186907022999}
   - component: {fileID: 3525790358325379060}
   - component: {fileID: 1846605104}
@@ -815,6 +817,35 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7611217455755727102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6f952cb4cba5d4086a16e61ea7588c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 7280041186827877943}
+  Deck: {fileID: 4508888837251354999}
+  Body: {fileID: 7280041186907022999}
+  Grapple: {fileID: 3525790358325379060}
+  Gun: {fileID: 860373042}
+--- !u!114 &4508888837251354999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624a9087b1f19134ca374c7cdc606c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7280041186907022999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +864,6 @@ MonoBehaviour:
   jumpForce: 5
   jumpCooldown: 1
   airForce: 2
-  jumpKey: 32
   playerHeight: 2
   Ground:
     serializedVersion: 2

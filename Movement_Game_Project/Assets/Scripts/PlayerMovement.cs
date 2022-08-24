@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airForce;
     bool CanJump;
-    public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground")]
     public float playerHeight;
@@ -57,8 +56,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
-
-        MyInput();
         SpeedControl();
         StateHandler();
 
@@ -71,23 +68,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (state != MovementState.restricted)
+        {
             MovePlayer();
+        }
     }
 
-    private void MyInput()
+    public void Walk(float horizontal, float vertical)
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        //To Jump
-        if (Input.GetKey(jumpKey) && CanJump && isGround)
-        {
-            CanJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
+        horizontalInput=horizontal;
+        verticalInput =vertical;
     }
 
     private void StateHandler()
@@ -156,12 +145,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Debug.Log("Jump");
+        if (CanJump && isGround)
+        {
+            Debug.Log("Jump Done");
+            CanJump = false;
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            // reset y velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
     private void ResetJump()
     {
