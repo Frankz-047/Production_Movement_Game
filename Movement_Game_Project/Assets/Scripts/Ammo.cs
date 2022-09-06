@@ -6,6 +6,7 @@ public class Ammo : MonoBehaviour
 {
     public int destroyTimer;
     public bool playerWeaponAmmo;
+    public string groundTag = "Ammo";
     
     void Start()
     {
@@ -18,10 +19,10 @@ public class Ammo : MonoBehaviour
         RotaeTowars rt = go.gameObject.GetComponent<RotaeTowars>();
         if (playerWeaponAmmo == false)
         {
-            if (ph != null)
+            if (go.gameObject.CompareTag("Player"))
             {
-                ph.Hit();
                 print("player hit");
+                ph.Hit();
             }
             if (rt == null)
             {
@@ -35,7 +36,7 @@ public class Ammo : MonoBehaviour
                 rt.Hit();
                 print("enemy hit");
             }
-            if (ph == null)
+            if(go.gameObject.CompareTag(groundTag))
             {
                 Destroy(gameObject);
             }
