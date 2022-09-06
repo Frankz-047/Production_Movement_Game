@@ -3,7 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AIType
+{
+    Tower,
+    Dandelion
+}
 public class RangeAttack : MonoBehaviour {
+  
 	public float speedUp, speed, killTimer;
     public float fireDealy = 0.5f;
     private float trueSpeed,  trueKillTimer;
@@ -13,9 +19,8 @@ public class RangeAttack : MonoBehaviour {
 	public GameObject ammo,spawnPoint;
     private GameObject player;
 	private RotaeTowars RotaeScript;
+    public AIType AIcurType = AIType.Dandelion;
 
-    //for dandelion 
-    public int i_numberOfBulletsX, i_numberOfBulletsY;
 
     // Use this for initialization
     void Start () {
@@ -26,72 +31,36 @@ public class RangeAttack : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(outPut());
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(RotaeScript != null)
-        {
-            if (RotaeScript.ReadyToAttack() && canFire)
-            {
+    // Update is called once per frame
+    void Update()
+    {
 
-                FireBullet();
-                StartCoroutine(FireTimer());
-            }
-            if (RotaeScript.ReadyToAttack() && speedUpLode == false)
-            {
-                StopCoroutine(outOfSight());
-                speedUpLode = true;
-                StartCoroutine(inSight());
-            }
-            if (RotaeScript.ReadyToAttack() == false)
-            {
-                StartCoroutine(outOfSight());
-            }
-        }
-        else
+        if (RotaeScript.ReadyToAttack() && canFire)
         {
-            if (canFire)
-            {
-                FireBullet();
-                StartCoroutine(FireTimer());
-            }
+
+            FireBullet();
+            StartCoroutine(FireTimer());
         }
-       
+        if (RotaeScript.ReadyToAttack() && speedUpLode == false)
+        {
+            StopCoroutine(outOfSight());
+            speedUpLode = true;
+            StartCoroutine(inSight());
+        }
+        if (RotaeScript.ReadyToAttack() == false)
+        {
+            StartCoroutine(outOfSight());
+        }
     }
+    
+     
 
 	private void FireBullet()
     {
-  
-        if (RotaeScript != null)
-        {
-            Quaternion rotation = spawnPoint.transform.rotation;
-            GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-            
-        }
-        else
-        {
-            Quaternion rotation = this.transform.rotation;
-            float XAngledifference = 360 / i_numberOfBulletsX;
-            float YAngleDifference = 90 / i_numberOfBulletsY;
-            for (int y = 0; y <= i_numberOfBulletsY; y++)
-            {
-                for (int x = 0; x <= i_numberOfBulletsX; x++)
-                {
-                    if(x >= (i_numberOfBulletsX / 2))
-                    {
-                        YAngleDifference *= -1;
-                        rotation.x = 0;
-                    }
-                    GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
-                    rotation.y += XAngledifference;
-                    rotation.x += YAngleDifference;
-                    this.transform.Rotate(rotation.x, rotation.y, 0, Space.World);
 
-                }
-            }
-            this.transform.rotation = new Quaternion(0,0,0,0);
-        }
+       Quaternion rotation = spawnPoint.transform.rotation;
+       GameObject ammoObj = Instantiate(ammo, spawnPoint.transform.position, rotation);
 
     }
 
@@ -128,4 +97,6 @@ public class RangeAttack : MonoBehaviour {
         print("the ammo speed ia at " + speed);
         StartCoroutine(outPut());
     }
+
+ 
 }

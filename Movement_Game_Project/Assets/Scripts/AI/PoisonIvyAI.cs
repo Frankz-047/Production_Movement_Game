@@ -10,6 +10,10 @@ public class PoisonIvyAI : BaseAI
     public float f_TimerBeforeDrop;
     public float f_yOffset;
 
+
+    // for Material Infacted
+    public Material m_poisonMaterial;
+
     private bool b_canFire = true;
     //for testing later to change into funcionts ******
     public bool isAlive = true;

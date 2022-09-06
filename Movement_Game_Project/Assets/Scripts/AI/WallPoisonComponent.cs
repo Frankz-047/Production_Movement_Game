@@ -9,7 +9,7 @@ public class WallPoisonComponent : MonoBehaviour
     public bool b_isPoisonous = false;
 
     public float f_PoisonDuration;
-    private Material m_originalMaterial;
+    public Material m_originalMaterial;
     public Material m_poisonMaterial;
     private float f_PosiontimeLeft;
     // For Damagin Player
@@ -18,9 +18,10 @@ public class WallPoisonComponent : MonoBehaviour
     private bool b_canDamagePlayer = true;
 
     // Start is called before the first frame update
+
     void Start()
     {
-        m_originalMaterial = GetComponent<Renderer>().material;
+    
         f_PosiontimeLeft = f_PoisonDuration;
     }
 
@@ -61,16 +62,10 @@ public class WallPoisonComponent : MonoBehaviour
 
 
     }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponentInParent<PoisonIvyAI>())
-        {
-            b_isPoisonous = true;
-            Destroy(collision.gameObject);
-            f_PosiontimeLeft = f_PoisonDuration;
-            GetComponent<Renderer>().material = m_poisonMaterial;
-        }
+
         if(collision.gameObject.GetComponent<PlayerHealth>())
         {
             p_playerInContact = collision.gameObject.GetComponent<PlayerHealth>();
@@ -83,5 +78,12 @@ public class WallPoisonComponent : MonoBehaviour
         {
             p_playerInContact = null;
         }
+    }
+    public void setPoisous()
+    {
+        m_originalMaterial = GetComponent<Renderer>().material;
+        b_isPoisonous = true;
+        f_PosiontimeLeft = f_PoisonDuration;
+        GetComponent<Renderer>().material = m_poisonMaterial;
     }
 }

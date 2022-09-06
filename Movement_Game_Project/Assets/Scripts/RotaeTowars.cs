@@ -8,6 +8,7 @@ public class RotaeTowars : MonoBehaviour {
     private int time;
     public float attackRange;
     public float rotaeSpeed;
+    private bool rotae = true;
 
 	// Use this for initialization
 	void Start () {
@@ -15,18 +16,21 @@ public class RotaeTowars : MonoBehaviour {
         target  = player.GetComponent<Transform>();
         StartCoroutine(outPut());
     }
-	
-	// Update is called once per frame
-	void Update () {
-		//transform.LookAt(target); 
-		Vector3 targetDirection = target.position - transform.position;
-		Vector3 currentDirection  = transform.forward;
 
-		float step = rotaeSpeed * Time.deltaTime;
+    // Update is called once per frame
+    void Update() {
+        if (rotae)
+        {
+            //transform.LookAt(target); 
+            Vector3 targetDirection = target.position - transform.position;
+            Vector3 currentDirection = transform.forward;
 
-		Vector3 newDir =  Vector3.RotateTowards(currentDirection, targetDirection, step, 0.0f);
-		transform.rotation = Quaternion.LookRotation(newDir);
-	}
+            float step = rotaeSpeed * Time.deltaTime;
+
+            Vector3 newDir = Vector3.RotateTowards(currentDirection, targetDirection, step, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDir);
+        }
+    }
 
     public bool ReadyToAttack()
     {
@@ -73,5 +77,9 @@ public class RotaeTowars : MonoBehaviour {
             time = 0;
         }
         StartCoroutine(outPut());
+    }
+    public void RotationStatus(bool state)
+    {
+        rotae = state;
     }
 }
