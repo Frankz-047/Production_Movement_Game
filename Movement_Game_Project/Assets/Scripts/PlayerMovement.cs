@@ -19,9 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public float airForce;
     public float fallMult;
     public float maxJumpHeight = 5.0f;
+    public float dashSpeed = 4.0f;
     public int jumpCharge = 2;
     bool CanJump;
+    bool canDash;
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode dashKey = KeyCode.LeftShift;
     private float jumpPoint;
 
     [Header("Ground")]
@@ -57,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         CanJump = true;
+        canDash = true;
     }
 
     private void Update()
@@ -71,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ResetJump();
         }
+        
 
         MyInput();
         SpeedControl();
@@ -94,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMult * Time.deltaTime;
         }
+        
     }
 
     private void MyInput()
@@ -118,7 +124,11 @@ public class PlayerMovement : MonoBehaviour
             jumpPoint = rb.position.y;
 
             Jump();
-
+        }
+        //To Air Dash
+        if (Input.GetKeyDown(dashKey) && !isGround && canDash)
+        {
+            AirDash();
         }
     }
 
@@ -199,6 +209,15 @@ public class PlayerMovement : MonoBehaviour
     {
         checkGrounded = false;
         CanJump = true;
+        canDash = true;
         jumpCharge = 2;
+    }
+    private void AirDash()
+    {
+        Debug.Log(rb.velocity);
+        Vector3 addVel = new Vector3(rb.velocity.x * dashSpeed, 1, rb.velocity.z * dashSpeed);
+        rb.AddRelativeForce(addVel.normalized * walkspeed * dashSpeed, ForceMode.Force);
+        Debug.Log(rb.velocity);
+        canDash = false;
     }
 }
