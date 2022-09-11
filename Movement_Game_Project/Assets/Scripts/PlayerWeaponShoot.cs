@@ -23,6 +23,7 @@ public class PlayerWeaponShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         if (ammocount == 0)
         {
             Reload();
@@ -32,10 +33,21 @@ public class PlayerWeaponShoot : MonoBehaviour
     public void Reload()
     {
         if(!reloading)
+=======
+        if (ammocount == 0 && !reloading)
         {
             StartCoroutine(ReloadTimer());
         }
     }
+    public void Reload()
+    {
+        if (!reloading)
+>>>>>>> Stashed changes
+        {
+            StartCoroutine(ReloadTimer());
+        }
+    }
+<<<<<<< Updated upstream
 
     public void Shoot()
     {
@@ -43,11 +55,17 @@ public class PlayerWeaponShoot : MonoBehaviour
         {
             FireBulletMain();
             FireBulletSub();
+=======
+    public void Shoot()
+    {
+        if (canFire && ammocount > 0)
+        {
+            FireBulletMain();
+>>>>>>> Stashed changes
             ammocount -= 1;
             StartCoroutine(FireTimer());
         }
     }
-
     private void FireBulletMain()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

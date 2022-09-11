@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airForce;
+<<<<<<< Updated upstream
+=======
+    public float fallMult = 2f;
+>>>>>>> Stashed changes
     bool CanJump;
 
     [Header("Ground")]
@@ -56,6 +60,19 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
+<<<<<<< Updated upstream
+=======
+
+        if (!isGround && !checkGrounded)
+        {
+            checkGrounded = true;
+        }
+        if (isGround && checkGrounded)
+        {
+            ResetJump();
+        }
+
+>>>>>>> Stashed changes
         SpeedControl();
         StateHandler();
 
@@ -73,10 +90,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     public void Walk(float horizontal, float vertical)
     {
         horizontalInput=horizontal;
         verticalInput =vertical;
+=======
+    public void Walk(float horIn, float verIn)
+    {
+        horizontalInput = horIn;
+        verticalInput = verIn;
+>>>>>>> Stashed changes
     }
 
     private void StateHandler()
@@ -147,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+<<<<<<< Updated upstream
         Debug.Log("Jump");
         if (CanJump && isGround)
         {
@@ -158,6 +183,16 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
             Invoke(nameof(ResetJump), jumpCooldown);
+=======
+        //To Jump
+        if (CanJump)
+        {
+            CanJump = false;
+            // reset y velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            //jump
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+>>>>>>> Stashed changes
         }
     }
     private void ResetJump()
@@ -169,4 +204,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return isGround;
     }
+    public bool GetCanJump() { return CanJump; }
 }

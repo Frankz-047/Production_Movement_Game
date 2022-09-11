@@ -30,27 +30,42 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Jumpeee");
+=======
+>>>>>>> Stashed changes
             Gun.Shoot();
         }
         else if (Input.GetButtonDown("Reload"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Jumpeee");
+=======
+>>>>>>> Stashed changes
             Gun.Reload();
         }
         if (Input.GetButtonDown("Hook"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Jumpeee");
+=======
+>>>>>>> Stashed changes
             Grapple.ShootHook();
         }
         if(Input.GetButtonDown("PlayCard"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Jumpeee");
+=======
+>>>>>>> Stashed changes
             Deck.PlayCard();
         }
         if(Input.GetButtonDown("Jump"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Jumpeee");
+=======
+>>>>>>> Stashed changes
             Body.Jump();
         }
     }
