@@ -214,10 +214,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void AirDash()
     {
-        Debug.Log(rb.velocity);
         Vector3 addVel = new Vector3(rb.velocity.x * dashSpeed, 1, rb.velocity.z * dashSpeed);
-        rb.AddRelativeForce(addVel.normalized * walkspeed * dashSpeed, ForceMode.Force);
-        Debug.Log(rb.velocity);
+        rb.AddRelativeForce(addVel * walkspeed * dashSpeed, ForceMode.Force);
         canDash = false;
     }
 }
