@@ -94,11 +94,10 @@ GameObject:
   - component: {fileID: 2826838658190272583}
   - component: {fileID: 2826838658190272582}
   - component: {fileID: 2826838658190272578}
-  - component: {fileID: 2826838658190272579}
   - component: {fileID: 2826838658190272588}
   m_Layer: 0
   m_Name: TestEnemy_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,20 +196,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!114 &2826838658190272579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2826838658190272581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 642ad1a3c23c5394c9b984f9ac574df8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 100
-  rotaeSpeed: 2
 --- !u!114 &2826838658190272588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,9 +211,6 @@ MonoBehaviour:
   speedUp: 10
   speed: 1000
   killTimer: 0
-  fireDealy: 0.5
   speedUpLode: 0
   ammo: {fileID: 44918463316603371, guid: a98b5df9ad3012644ada0cfc49f657cf, type: 3}
   spawnPoint: {fileID: 2826838657004362707}
-  i_numberOfBulletsX: 0
-  i_numberOfBulletsY: 0

@@ -17,16 +17,14 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airForce;
-<<<<<<< Updated upstream
-=======
     public float fallMult = 2f;
->>>>>>> Stashed changes
     bool CanJump;
 
     [Header("Ground")]
     public float playerHeight;
     public LayerMask Ground;
     public bool isGround;
+    public bool checkGrounded;
 
     [Header("Setting")]
     public Transform orientation;
@@ -60,8 +58,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
-<<<<<<< Updated upstream
-=======
 
         if (!isGround && !checkGrounded)
         {
@@ -71,8 +67,6 @@ public class PlayerMovement : MonoBehaviour
         {
             ResetJump();
         }
-
->>>>>>> Stashed changes
         SpeedControl();
         StateHandler();
 
@@ -87,20 +81,39 @@ public class PlayerMovement : MonoBehaviour
         if (state != MovementState.restricted)
         {
             MovePlayer();
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y * fallMult * Time.deltaTime;
         }
     }
 
-<<<<<<< Updated upstream
     public void Walk(float horizontal, float vertical)
     {
         horizontalInput=horizontal;
         verticalInput =vertical;
-=======
     public void Walk(float horIn, float verIn)
     {
         horizontalInput = horIn;
         verticalInput = verIn;
->>>>>>> Stashed changes
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+
+        //To Jump
+        if (Input.GetKeyDown(jumpKey) && CanJump)
+        {
+            --jumpCharge;
+            if (!isGround)
+            {
+                --jumpCharge;
+            }
+
+            if (jumpCharge <= 0)
+            {
+                CanJump = false;
+            }
+
+            Jump();
+        }
     }
 
     private void StateHandler()
@@ -171,7 +184,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-<<<<<<< Updated upstream
         Debug.Log("Jump");
         if (CanJump && isGround)
         {
@@ -183,7 +195,6 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
             Invoke(nameof(ResetJump), jumpCooldown);
-=======
         //To Jump
         if (CanJump)
         {
@@ -192,12 +203,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //jump
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
->>>>>>> Stashed changes
         }
     }
     private void ResetJump()
     {
+        checkGrounded = false;
         CanJump = true;
+        jumpCharge = 2;
     }
 
     public bool onGround()
