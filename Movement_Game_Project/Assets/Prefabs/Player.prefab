@@ -175,8 +175,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 928007543}
   fireingTimer: 1
   BulletsSpread: 0.2
-  reloadTimer: 0.7
   ammocount: 2
+  reloadTimer: 0
   ammoSpeed: 5000
   pushBack: 0
   reloading: 0
@@ -760,6 +760,7 @@ MonoBehaviour:
   camY: 400
   orientation: {fileID: 7280041185864545192}
   GunOrientation: {fileID: 4504043115338866446}
+  sensitivity: 300
 --- !u!1 &7280041186907022993
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,9 +771,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7280041186907022997}
   - component: {fileID: 7280041186907022996}
+  - component: {fileID: 7611217455755727102}
+  - component: {fileID: 4508888837251354999}
   - component: {fileID: 7280041186907022999}
   - component: {fileID: 3525790358325379060}
   - component: {fileID: 1846605104}
+  - component: {fileID: 1768767174481334169}
+  - component: {fileID: 4075790213230624402}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -815,6 +820,35 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7611217455755727102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6f952cb4cba5d4086a16e61ea7588c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 7280041186827877943}
+  Deck: {fileID: 4508888837251354999}
+  Body: {fileID: 7280041186907022999}
+  Grapple: {fileID: 3525790358325379060}
+  Gun: {fileID: 860373042}
+--- !u!114 &4508888837251354999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624a9087b1f19134ca374c7cdc606c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7280041186907022999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,12 +867,16 @@ MonoBehaviour:
   jumpForce: 5
   jumpCooldown: 1
   airForce: 2
-  jumpKey: 32
+<<<<<<< Updated upstream
+=======
+  fallMult: 2
+>>>>>>> Stashed changes
   playerHeight: 2
   Ground:
     serializedVersion: 2
     m_Bits: 128
   isGround: 0
+  checkGrounded: 0
   orientation: {fileID: 7280041185864545192}
   state: 0
   restricted: 0
@@ -889,6 +927,8 @@ MonoBehaviour:
   wallRunJumpSideForce: 7
   maxWallRunTime: 10
   wallClimbSpeed: 20
+  fov: 90
+  tilt: 5
   upwardsRunKey: 304
   downwardsRunKey: 306
   jumpKey: 32
@@ -902,6 +942,37 @@ MonoBehaviour:
   useGravity: 0
   yDrossleSpeed: 0
   orientation: {fileID: 7280041185864545192}
+  cam: {fileID: 0}
+--- !u!114 &1768767174481334169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05768c1189539eb41a8d4a8eab742608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 7280041186827877943}
+  Deck: {fileID: 4075790213230624402}
+  Body: {fileID: 7280041186907022999}
+  Grapple: {fileID: 3525790358325379060}
+  Gun: {fileID: 860373042}
+--- !u!114 &4075790213230624402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38230ffc6e9d6a147b27ee4546668b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
 --- !u!1 &7280041187113154129
 GameObject:
   m_ObjectHideFlags: 0

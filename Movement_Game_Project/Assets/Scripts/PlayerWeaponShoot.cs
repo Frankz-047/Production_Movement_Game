@@ -21,22 +21,43 @@ public class PlayerWeaponShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canFire && ammocount > 0)
+        if (ammocount == 0)
         {
-            FireBulletMain();
-            ammocount -= 1;
-            StartCoroutine(FireTimer());
+            Reload();
         }
-        else if (Input.GetKeyDown(KeyCode.R) && !reloading)
+    }
+
+    public void Reload()
+    {
+        if(!reloading)
+        if (ammocount == 0 && !reloading)
         {
             StartCoroutine(ReloadTimer());
         }
-        else if (ammocount == 0 && !reloading)
+    }
+    public void Reload()
+    {
+        if (!reloading)
         {
             StartCoroutine(ReloadTimer());
         }
     }
 
+    public void Shoot()
+    {
+        if(canFire && ammocount > 0)
+        {
+            FireBulletMain();
+            FireBulletSub();
+    public void Shoot()
+    {
+        if (canFire && ammocount > 0)
+        {
+            FireBulletMain();
+            ammocount -= 1;
+            StartCoroutine(FireTimer());
+        }
+    }
     private void FireBulletMain()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
