@@ -174,11 +174,11 @@ MonoBehaviour:
   ammo: {fileID: 44918463316603371, guid: f10402326cbb716429a127ae2f4e7178, type: 3}
   spawnPoint: {fileID: 928007543}
   fireingTimer: 1
-  BulletsSpread: 0.2
+  BulletsSpread: 5
   ammocount: 2
   reloadTimer: 0
-  ammoSpeed: 5000
-  pushBack: 0
+  ammoSpeed: 3500
+  pushBack: 1500
   reloading: 0
 --- !u!1 &2997118312302288434
 GameObject:
@@ -359,7 +359,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056139616481870176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -502,6 +502,51 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5099128244659313046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4096496528306129090}
+  - component: {fileID: 820757624015347414}
+  m_Layer: 0
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4096496528306129090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5099128244659313046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7280041186907022997}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820757624015347414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5099128244659313046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624a9087b1f19134ca374c7cdc606c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+  cooldown: 3
 --- !u!1 &6248492886642118482
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3176171111779724194
 Transform:
   m_ObjectHideFlags: 0
@@ -760,7 +805,6 @@ MonoBehaviour:
   camY: 400
   orientation: {fileID: 7280041185864545192}
   GunOrientation: {fileID: 4504043115338866446}
-  sensitivity: 300
 --- !u!1 &7280041186907022993
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,13 +815,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7280041186907022997}
   - component: {fileID: 7280041186907022996}
-  - component: {fileID: 7611217455755727102}
-  - component: {fileID: 4508888837251354999}
   - component: {fileID: 7280041186907022999}
   - component: {fileID: 3525790358325379060}
   - component: {fileID: 1846605104}
-  - component: {fileID: 1768767174481334169}
-  - component: {fileID: 4075790213230624402}
+  - component: {fileID: 5257508096582206145}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -794,13 +835,14 @@ Transform:
   m_GameObject: {fileID: 7280041186907022993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2490782102893883996}
   - {fileID: 7280041186627195540}
   - {fileID: 7280041185864545192}
   - {fileID: 7280041187113154134}
   - {fileID: 4504043115338866446}
+  - {fileID: 4096496528306129090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -820,35 +862,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7611217455755727102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280041186907022993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6f952cb4cba5d4086a16e61ea7588c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 7280041186827877943}
-  Deck: {fileID: 4508888837251354999}
-  Body: {fileID: 7280041186907022999}
-  Grapple: {fileID: 3525790358325379060}
-  Gun: {fileID: 860373042}
---- !u!114 &4508888837251354999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280041186907022993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624a9087b1f19134ca374c7cdc606c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7280041186907022999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,17 +874,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3f0929ed6ce5845b6ff6d027dab160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 10
-  wallrunSpeed: 10
-  groundDrag: 1
-  jumpForce: 5
+  walkspeed: 25
+  wallrunSpeed: 35
+  groundDrag: 2
+  jumpForce: 60
   jumpCooldown: 1
-  airForce: 2
-<<<<<<< Updated upstream
-=======
+  airForce: 0.3
   fallMult: 2
->>>>>>> Stashed changes
-  playerHeight: 2
+  playerHeight: 4
   Ground:
     serializedVersion: 2
     m_Bits: 128
@@ -902,7 +912,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxGrappleDistance: 10000
-  hookSpeed: 6
+  hookSpeed: 8
   offset: {x: 0, y: 4.1, z: 0}
 --- !u!114 &1846605104
 MonoBehaviour:
@@ -936,14 +946,14 @@ MonoBehaviour:
   resetDoubleJumpsOnNewWall: 1
   resetDoubleJumpsOnEveryWall: 0
   allowedWallJumps: 1
-  wallCheckDistance: 0.7
-  minJumpHeight: 2
+  wallCheckDistance: 2
+  minJumpHeight: 10
   exitWallTime: 0.2
   useGravity: 0
   yDrossleSpeed: 0
   orientation: {fileID: 7280041185864545192}
   cam: {fileID: 0}
---- !u!114 &1768767174481334169
+--- !u!114 &5257508096582206145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -952,27 +962,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7280041186907022993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05768c1189539eb41a8d4a8eab742608, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b6f952cb4cba5d4086a16e61ea7588c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 7280041186827877943}
-  Deck: {fileID: 4075790213230624402}
+  Deck: {fileID: 820757624015347414}
   Body: {fileID: 7280041186907022999}
   Grapple: {fileID: 3525790358325379060}
   Gun: {fileID: 860373042}
---- !u!114 &4075790213230624402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280041186907022993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38230ffc6e9d6a147b27ee4546668b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cards: []
 --- !u!1 &7280041187113154129
 GameObject:
   m_ObjectHideFlags: 0

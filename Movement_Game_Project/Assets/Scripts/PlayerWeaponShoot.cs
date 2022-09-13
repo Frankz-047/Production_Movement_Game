@@ -27,14 +27,14 @@ public class PlayerWeaponShoot : MonoBehaviour
         }
     }
 
-    public void Reload()
-    {
-        if(!reloading)
-        if (ammocount == 0 && !reloading)
-        {
-            StartCoroutine(ReloadTimer());
-        }
-    }
+    //public void Reload()
+    //{
+    //    if(!reloading)
+    //    if (ammocount == 0 && !reloading)
+    //    {
+    //        StartCoroutine(ReloadTimer());
+    //    }
+    //}
     public void Reload()
     {
         if (!reloading)
@@ -43,12 +43,6 @@ public class PlayerWeaponShoot : MonoBehaviour
         }
     }
 
-    public void Shoot()
-    {
-        if(canFire && ammocount > 0)
-        {
-            FireBulletMain();
-            FireBulletSub();
     public void Shoot()
     {
         if (canFire && ammocount > 0)
