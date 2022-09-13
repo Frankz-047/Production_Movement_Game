@@ -830,7 +830,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
   - component: {fileID: 2607603397646692382}
+=======
+  - component: {fileID: 7280041186907022997}
+  - component: {fileID: 7280041186907022996}
+  - component: {fileID: 7280041186907022999}
+  - component: {fileID: 3525790358325379060}
+  - component: {fileID: 1846605104}
+  - component: {fileID: 5257508096582206145}
+  - component: {fileID: 2446884110225844160}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: CamPos
   m_TagString: Untagged
@@ -844,6 +854,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 2607603397646692383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2999997, z: 0}
@@ -851,6 +862,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2607603397722024144}
   m_RootOrder: 3
+=======
+  m_GameObject: {fileID: 7280041186907022993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2490782102893883996}
+  - {fileID: 7280041186627195540}
+  - {fileID: 7280041185864545192}
+  - {fileID: 7280041187113154134}
+  - {fileID: 4504043115338866446}
+  - {fileID: 4096496528306129090}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2607603397722024145
 GameObject:
@@ -858,6 +884,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2607603397722024144}
@@ -873,6 +900,33 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &2607603397722024144
 Transform:
+=======
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3f0929ed6ce5845b6ff6d027dab160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkspeed: 25
+  wallrunSpeed: 35
+  groundDrag: 2
+  jumpForce: 12
+  jumpCooldown: 1
+  airForce: 0.3
+  fallMult: 2
+  playerHeight: 2
+  Ground:
+    serializedVersion: 2
+    m_Bits: 128
+  isGround: 0
+  checkGrounded: 0
+  orientation: {fileID: 7280041185864545192}
+  state: 0
+  restricted: 0
+  wallrunning: 0
+--- !u!114 &3525790358325379060
+MonoBehaviour:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -906,6 +960,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607603397722024145}
   m_Enabled: 1
+<<<<<<< Updated upstream
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -941,6 +996,48 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &2607603397722024147
 CapsuleCollider:
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6f952cb4cba5d4086a16e61ea7588c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 7280041186827877943}
+  Deck: {fileID: 820757624015347414}
+  Body: {fileID: 7280041186907022999}
+  Grapple: {fileID: 3525790358325379060}
+  Gun: {fileID: 860373042}
+--- !u!114 &2446884110225844160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280041186907022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de1813dd3b74e4b9702279d18c0d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+--- !u!1 &7280041187113154129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7280041187113154134}
+  m_Layer: 0
+  m_Name: CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7280041187113154134
+Transform:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
