@@ -79,11 +79,14 @@ public class WallPoisonComponent : MonoBehaviour
             p_playerInContact = null;
         }
     }
-    public void setPoisous()
+    public void setPoisous(Material materialPoison, float posionDuration) 
     {
+        print("set posonus");
         m_originalMaterial = GetComponent<Renderer>().material;
         b_isPoisonous = true;
+        f_PoisonDuration = posionDuration;
         f_PosiontimeLeft = f_PoisonDuration;
+        m_poisonMaterial = materialPoison;
         GetComponent<Renderer>().material = m_poisonMaterial;
     }
 }

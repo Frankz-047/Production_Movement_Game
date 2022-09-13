@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1056f0b5991d84684f5d083c0a0d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poisonDuration: 2
+  poisonDuration: 3
   poisonMaterial: {fileID: 2100000, guid: e51a686dbedfb0245aff944ae41b51e9, type: 2}
