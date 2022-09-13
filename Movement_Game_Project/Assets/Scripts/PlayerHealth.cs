@@ -7,11 +7,6 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public GameObject respawnPoint;
 
-    private void Start()
-    {
-        
-    }
-
     private void Dead()
     {
         Destroy(gameObject);
@@ -19,9 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hit()
     {
-        print("hit");
         health--;
-        if (health <= 0)
+        if(health <= 0)
         {
             Dead();
         }
@@ -40,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("KillZone") == true)
+        if(other.gameObject.CompareTag("KillZone") == true)
         {
             Hit();
         }

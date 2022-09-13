@@ -7,11 +7,8 @@ TagManager:
   - Grappleable
   - Enemy
   - Ammo
-<<<<<<< Updated upstream
-=======
   - Building
   - KillZone
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
