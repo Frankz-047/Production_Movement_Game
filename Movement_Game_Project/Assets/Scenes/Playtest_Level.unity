@@ -1911,6 +1911,14 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: walkspeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280041186907022999, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
+      propertyPath: wallrunSpeed
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3bba30f89e1e540ab45861d4cd6266, type: 3}
 --- !u!1001 &743017051
