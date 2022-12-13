@@ -17,13 +17,14 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airForce;
+    public float fallMult = 2f;
     bool CanJump;
-    public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground")]
     public float playerHeight;
     public LayerMask Ground;
     public bool isGround;
+    public bool checkGrounded;
 
     [Header("Setting")]
     public Transform orientation;
@@ -58,7 +59,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, Ground);
 
-        MyInput();
+        if (!isGround && !checkGrounded)
+        {
+            checkGrounded = true;
+        }
+        if (isGround && checkGrounded)
+        {
+            ResetJump();
+        }
         SpeedControl();
         StateHandler();
 
@@ -71,23 +79,21 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (state != MovementState.restricted)
+        {
             MovePlayer();
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector3.up * Physics.gravity.y * fallMult * Time.deltaTime;
+            }
+        }
     }
 
-    private void MyInput()
+    public void Walk(float horIn, float verIn)
     {
+        horizontalInput = horIn;
+        verticalInput = verIn;
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        //To Jump
-        if (Input.GetKey(jumpKey) && CanJump && isGround)
-        {
-            CanJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
     }
 
     private void StateHandler()
@@ -156,15 +162,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Debug.Log("Jump");
+        if (CanJump && isGround)
+        {
+            Debug.Log("Jump Done");
+            CanJump = false;
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            // reset y velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+            //To Jump
+            if (CanJump)
+            {
+                CanJump = false;
+                // reset y velocity
+                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+                //jump
+                rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            }
+        }
     }
     private void ResetJump()
     {
+        checkGrounded = false;
         CanJump = true;
     }
 
@@ -172,4 +196,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return isGround;
     }
+    public bool GetCanJump() { return CanJump; }
 }
